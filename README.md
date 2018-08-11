@@ -1,6 +1,4 @@
-# PENDING MODIFICATION
-
-# ARM assembly highlighting for Visual Studio Code
+# RISCV assembly highlighting for Visual Studio Code
 
 Adds syntax highlighting for the ARM Assembly language to Visual Studio Code. This extension was originally written to support the ARM instruction set used in teaching at the University of Manchester so availability of instructions on platforms is not guaranteed.
 

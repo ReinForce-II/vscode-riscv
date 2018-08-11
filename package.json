@@ -1,15 +1,15 @@
 {
-	"name": "arm",
-	"displayName": "ARM",
-	"description": "ARM support for Visual Studio Code",
-	"version": "0.2.0",
-	"publisher": "dan-c-underwood",
+	"name": "riscv-asm",
+	"displayName": "RISCV-ASM",
+	"description": "RISCV support for Visual Studio Code",
+	"version": "0.0.1",
+	"publisher": "Reinforce-II",
 	"icon": "images/icon.png",
 	"author": {
-		"name": "Dan Underwood"
+		"name": "Reinforce-II"
 	},
 	"categories": [
-		"Languages"
+		"Programming Languages"
 	],
 	"engines": {
 		"vscode": "^0.10.1"
@@ -20,19 +20,19 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dan-c-underwood/vscode-arm.git"
+		"url": "https://github.com/Reinforce-II/vscode-riscv.git"
 	},
 	"contributes": {
 		"languages": [{
-			"id": "arm",
-			"aliases": ["ARM", "arm"],
+			"id": "riscv",
+			"aliases": ["RISCV", "riscv"],
 			"extensions": [".s",".S",".asm"],
-			"configuration": "./arm.configuration.json"
+			"configuration": "./riscv.configuration.json"
 		}],
 		"grammars": [{
-			"language": "arm",
-			"scopeName": "source.arm",
-			"path": "./syntaxes/arm.json"
+			"language": "riscv",
+			"scopeName": "source.riscv",
+			"path": "./syntaxes/riscv.json"
 		}]
 	}
 }

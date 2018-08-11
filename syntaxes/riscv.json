@@ -1,0 +1,99 @@
+{
+  "scopeName": "source.riscv",
+  "name": "RISCV",
+  "fileTypes": [
+    "s",
+    "S",
+    "asm"
+  ],
+  "patterns": [
+    {
+      "match": "(//).*$",
+      "name": "comment.riscv"
+    },
+    {
+      "name": "comment.riscv",
+      "begin": "\\/\\*",
+      "beginCaptures": {
+        "0": {
+          "name": "comment.begin.riscv"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "comment.end.riscv"
+        }
+      },
+      "end": "\\*\\/"
+    },
+    {
+      "match": "^\\s*\\.?\\w+:\\s*(?=$|;)",
+      "name": "routine.riscv"
+    },
+    {
+      "name": "invalid.illegal.string.riscv",
+      "match": "\"[^\"]+$"
+    },
+    {
+      "name": "string.quoted.riscv",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "match": "\\'\\S\\'",
+      "name": "string.char.riscv"
+    },
+    {
+      "match": "#?[0-9]+\\b",
+      "name": "constant.numeric.dec.riscv"
+    },
+    {
+      "match": "#?-?(0x|&)[0-9a-fA-F_]+\\b",
+      "name": "constant.numeric.hex.riscv"
+    },
+    {
+      "match": "\\b(x[0-9]|x[1-2][0-9]|x3[0-1]|f[0-9]|f[1-2][0-9]|f3[0-1]|zero|ra|sp|gp|tp|t[0-6]|s[0-9]|s1[0-1]|a[0-7]|fp|ft[0-9]|ft1[0-1]|fa[0-7]|fs[0-9]|fs1[0-1]|ustatus|uie|utvec|uscratch|uepc|ucause|utval|uip|fflags|frm|fcsr|m?cycleh?|timeh?|m?instreth?|m?hpmcounter[3-9]h?|m?hpmcounter[1-2][0-9]h?|m?hpmcounter3[0-1]h?|sstatus|sedeleg|sideleg|sie|stvec|scounteren|sscratch|sepc|scause|stval|sip|satp|mvendorid|marchid|mimpid|mhartid|mstatus|misa|medeleg|mideleg|mie|mtvec|mcounteren|mscratch|mepc|mcause|mtval|mip|pmpcfg[0-3]|pmpaddr[0-9]|pmpaddr1[0-5]|mhpmevent[3-9]|mhpmevent[1-2][0-9]|mhpmevent3[0-1]|tselect|tdata[1-3]|dcsr|dpc|dscratch)\\b",
+      "name": "storage.other.register.riscv"
+    },
+    {
+      "name": "storage.memaddress.riscv",
+      "begin": "\\[",
+      "end": "\\]",
+      "patterns": [
+        {
+          "include": "$base"
+        }
+      ]
+    },
+    {
+      "name": "storage.stack.riscv",
+      "begin": "\\{",
+      "end": "\\}\\^?",
+      "patterns": [
+        {
+          "include": "$base"
+        }
+      ]
+    },
+    {
+      "match": "\\b(la|(l|s)(b|h|w|d)u?|li|mv|not|negw?|sext|seqz|snez|sltz|sgtz|fmv\\.s|fabs\\.s|fneg\\.s|fmv\\.d|fabs\\.d|fneg\\.d|beqz|bnez|blez|bgez|bltz|bgtz|bgt|ble|bgtu|bleu|j|jal|jr|jalr|(u|s|m)?ret|call|tail|fence|rdinstreth?|rdcycleh?|rdtimeh?|csrr|csrw|csrs|csrc|csrwi|csrsi|csrci|frcsr|fscsr|frrm|fsrm|fsrmi|frflags|fsflags|fsflagsi|lui|auipc|jal|jalr|beq|bne|blt|bge|bltu|bgeu|addi|sltiu?|xori|ori|andi|slli|srli|srai|add|sub|sll|sltu?|xor|srl|sra|or|and|fence(\\.i)?|ecall|ebreak|csrrwi?|csrrsi?|csrrci?|slli|rsli|srai|addiw|slliw|srliw|sraiw|addw|subw|sllw|srlw|sraw|mulh?s?u?|divu?|remu?|mulw|divu?w|remu?w|lr\\.(w|d)|sc\\.(w|d)|amoswap\\.(w|d)|amoadd\\.(w|d)|amoxor\\.(w|d)|amoand\\.(w|d)|amoor\\.(w|d)|amomin\\.(w|d)|amomax\\.(w|d)|amominu\\.(w|d)|amomaxu\\.(w|d)|fl(w|d)|fs(w|d)|fn?madd\\.(s|d)|fn?msub\\.(s|d)|fadd\\.(s|d)|fsub\\.(s|d)|fmul\\.(s|d)|fdiv\\.(s|d)|fsqrt\\.(s|d)|fsgnj\\.(s|d)|fsgnjn\\.(s|d)|fsgnjx\\.(s|d)|fmin\\.(s|d)|fmax\\.(s|d)|fcvt\\.s\\.d|fcvt\\.d\\.s|feq\\.(s|d)|flt\\.(s|d)|fle\\.(s|d)|fclass\\.(s|d)|fcvt\\.wu?\\.d|fcvt\\.d\\.wu?|fcvt\\.lu?\\.d|fmv\\.x\\.d|fcvt\\.d\\.lu?|fmv\\.d\\.x)\\b",
+      "name": "keyword.mnemonic.generic.riscv"
+    },
+    {
+      "match": "\\b(?i)(def(b|w|s)|equ|align\\s.+\\.s)(?-i)\\b",
+      "name": "keyword.control.define.riscv"
+    },
+    {
+      "name": "keyword.control.directive.riscv",
+      "match": "\\.(?i)(align|file|global|local|comm|common|ident|section|size|text|data|rodata|bss|string|asciz|equ|macro|endm|type|option|byte|2byte|half|short|4byte|word|long|8byte|dword|quad|dtprelword|dtpreldword|sleb128|uleb128|p2align|balign|zero)(?-i)\\b"
+    },
+    {
+      "name": "keyword.other.preprocessor.riscv",
+      "match": "^\\s*\\.?(define|defined|elif|else|if|ifdef|ifndef|line|include|get|pragma|undef|endif)\\b"
+    },
+    {
+      "match": "\\b\\=",
+      "name": "keyword.control.evaluation"
+    }
+  ]
+}
